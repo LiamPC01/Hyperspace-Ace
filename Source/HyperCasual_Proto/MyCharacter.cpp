@@ -9,7 +9,6 @@ AMyCharacter::AMyCharacter()
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	Lane = 2; 
 
 }
 
@@ -18,6 +17,7 @@ void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
+	ActorDestination = GetActorLocation();
 }
 
 // Called every frame
@@ -25,10 +25,18 @@ void AMyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-//Moving the actor forward every frame
-	FVector ActorLocation = GetActorLocation();
+	ActorLocation = GetActorLocation();
+
+
+
+	// Moving actor forward every frame
 	ActorLocation.X += 10.f;
+	ActorDestination.X += 10.f;
 	SetActorLocation(ActorLocation);
+
+	// Moving actor left & right
+	SetActorLocation(FMath::VInterpTo(ActorLocation, ActorDestination, DeltaTime, InterpSpeed));
+
 
 }
 
@@ -45,9 +53,7 @@ void AMyCharacter::MoveLeft()
 {
 	if (Lane != 1)
 	{
-		FVector ActorLocation = GetActorLocation();
-		ActorLocation.Y -= 200.f;
-		SetActorLocation(ActorLocation);
+		ActorDestination.Y -= 200;
 		Lane -= 1;
 		UE_LOG(LogTemp, Warning, TEXT("Lane %f"), Lane);
 	}
@@ -57,13 +63,14 @@ void AMyCharacter::MoveRight()
 {
 	if (Lane != 3)
 	{
-		FVector ActorLocation = GetActorLocation();
-		ActorLocation.Y += 200.f;
-		SetActorLocation(ActorLocation);
+		ActorDestination.Y += 200;
 		Lane += 1;
 		UE_LOG(LogTemp, Warning, TEXT("Lane %f"), Lane);
 	}
 }
+
+
+
 
 
 

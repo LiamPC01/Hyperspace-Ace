@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "MyCharacter.generated.h"
 
+
 UCLASS()
 class HYPERCASUAL_PROTO_API AMyCharacter : public ACharacter
 {
@@ -15,8 +16,7 @@ public:
 	// Sets default values for this character's properties
 	AMyCharacter();
 	
-	float Lane;
-	
+	float Lane = 2;
 
 protected:
 	// Called when the game starts or when spawned
@@ -31,6 +31,18 @@ public:
 
 	void MoveLeft();
 	void MoveRight();
+
+	UPROPERTY(EditAnywhere, Category = "Interp")
+	float InterpSpeed = 10;
+
+	UPROPERTY(EditAnywhere, Category = "Interp")
+	FVector ActorLocation;
+
+	UPROPERTY(EditAnywhere, Category = "Interp")
+	FVector ActorDestination;
+
+
+	
 	
 
 
