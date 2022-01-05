@@ -15,35 +15,39 @@ class HYPERCASUAL_PROTO_API AMyCharacter : public ACharacter
 public:
 	// Sets default values for this character's properties
 	AMyCharacter();
-	
+
 	float Lane = 2;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	void MoveLeft();
-	void MoveRight();
+	UFUNCTION()
+		void MoveLeft();
 
-	UPROPERTY(EditAnywhere, Category = "Interp")
-	float InterpSpeed = 10;
+	UFUNCTION()
+		void MoveRight();
 
-	UPROPERTY(EditAnywhere, Category = "Interp")
-	FVector ActorLocation;
+	UFUNCTION()
+		void MoveForward();
 
-	UPROPERTY(EditAnywhere, Category = "Interp")
-	FVector ActorDestination;
+	UPROPERTY(EditAnywhere, Category = "Movement")
+		float InterpSpeed = 10;
 
+	UPROPERTY(EditAnywhere, Category = "Movement")
+		FVector ActorLocation;
 
-	
-	
+	UPROPERTY(EditAnywhere, Category = "Movement")
+		FVector ActorDestination;
 
+	UPROPERTY(EditAnywhere, Category = "Movement")
+		float ForwardSpeed;
 
 };

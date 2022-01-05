@@ -18,6 +18,7 @@ void AMyCharacter::BeginPlay()
 	Super::BeginPlay();
 
 	ActorDestination = GetActorLocation();
+	ForwardSpeed = 10.f;
 }
 
 // Called every frame
@@ -27,16 +28,10 @@ void AMyCharacter::Tick(float DeltaTime)
 
 	ActorLocation = GetActorLocation();
 
-
-
-	// Moving actor forward every frame
-	ActorLocation.X += 10.f;
-	ActorDestination.X += 10.f;
-	SetActorLocation(ActorLocation);
+	MoveForward();
 
 	// Moving actor left & right
 	SetActorLocation(FMath::VInterpTo(ActorLocation, ActorDestination, DeltaTime, InterpSpeed));
-
 
 }
 
@@ -67,6 +62,14 @@ void AMyCharacter::MoveRight()
 		Lane += 1;
 		UE_LOG(LogTemp, Warning, TEXT("Lane %f"), Lane);
 	}
+}
+
+void AMyCharacter::MoveForward()
+{
+	// Moving actor forward every frame
+	ActorLocation.X += ForwardSpeed;
+	ActorDestination.X += ForwardSpeed;
+	SetActorLocation(ActorLocation);
 }
 
 

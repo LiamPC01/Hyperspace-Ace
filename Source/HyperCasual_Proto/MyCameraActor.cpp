@@ -2,12 +2,15 @@
 
 
 #include "MyCameraActor.h"
+#include <HyperCasual_Proto/MyCharacter.h>
 
 // Sets default values
 AMyCameraActor::AMyCameraActor()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	
 
 }
 
@@ -28,4 +31,6 @@ void AMyCameraActor::Tick(float DeltaTime)
 	SetActorLocation(ActorLocation);
 
 }
+
+
 
