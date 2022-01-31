@@ -4,6 +4,7 @@
 #include "ObstacleActor.h"
 #include "Components/BoxCOmponent.h"
 #include "Engine/Engine.h"
+#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 
 // Sets default values
 AObstacleActor::AObstacleActor()
@@ -27,6 +28,8 @@ void AObstacleActor::BeginPlay()
 {
 	Super::BeginPlay();
 
+	// Casting to MyCharacter, accessing using UGameplayStatics.
+	MyCharacter = Cast<AMyCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 }
 
 // Called every frame
@@ -39,6 +42,10 @@ void AObstacleActor::Tick(float DeltaTime)
 void AObstacleActor::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Green, "Overlap Begin");
+	if (MyCharacter && MyCharacter == OtherActor)
+	{
+		MyCharacter->DecSpeed(); // Casting to MyCharacter to decrease ForwardSpeed
+	}
 }
 
 void AObstacleActor::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)

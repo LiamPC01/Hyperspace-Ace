@@ -2,6 +2,7 @@
 
 
 #include "MyCharacter.h"
+#include "Engine/Engine.h"
 
 // Sets default values
 AMyCharacter::AMyCharacter()
@@ -18,7 +19,7 @@ void AMyCharacter::BeginPlay()
 	Super::BeginPlay();
 
 	ActorDestination = GetActorLocation();
-	ForwardSpeed = 10.f;
+	
 }
 
 // Called every frame
@@ -70,6 +71,12 @@ void AMyCharacter::MoveForward()
 	ActorLocation.X += ForwardSpeed;
 	ActorDestination.X += ForwardSpeed;
 	SetActorLocation(ActorLocation);
+}
+
+void AMyCharacter::DecSpeed()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, "DecSpeed function called");
+	ForwardSpeed -= 5.f;
 }
 
 

@@ -2,7 +2,7 @@
 
 
 #include "MyCameraActor.h"
-#include <HyperCasual_Proto/MyCharacter.h>
+
 
 // Sets default values
 AMyCameraActor::AMyCameraActor()

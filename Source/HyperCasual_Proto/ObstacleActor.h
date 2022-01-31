@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "MyCharacter.h"
 #include "GameFramework/Actor.h"
 #include "ObstacleActor.generated.h"
 
@@ -20,6 +21,9 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+
+	AMyCharacter* MyCharacter; // This will be the variable to access MyCharacter
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 

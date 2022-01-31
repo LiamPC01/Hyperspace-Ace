@@ -17,6 +17,7 @@ public:
 	AMyCharacter();
 
 	float Lane = 2;
+	
 
 protected:
 	// Called when the game starts or when spawned
@@ -48,6 +49,11 @@ public:
 		FVector ActorDestination;
 
 	UPROPERTY(EditAnywhere, Category = "Movement")
-		float ForwardSpeed;
+		float ForwardSpeed = 10.f;
+
+	void DecSpeed();
+
+
+
 
 };
