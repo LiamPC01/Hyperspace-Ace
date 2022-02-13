@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "MyCameraActor.h"
 
 
@@ -10,7 +9,7 @@ AMyCameraActor::AMyCameraActor()
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	
+
 
 }
 
@@ -18,6 +17,8 @@ AMyCameraActor::AMyCameraActor()
 void AMyCameraActor::BeginPlay()
 {
 	Super::BeginPlay();
+
+	
 
 }
 
@@ -27,10 +28,14 @@ void AMyCameraActor::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	FVector ActorLocation = GetActorLocation();
-	ActorLocation.X += 10.f;
+	ActorLocation.X += CamForwardSpeed;
 	SetActorLocation(ActorLocation);
 
 }
 
-
+void AMyCameraActor::DecSpeedCam()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, "DecSpeedCam called");
+	//CamForwardSpeed -= 0.5f;
+}
 

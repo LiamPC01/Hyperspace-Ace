@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "MyCharacter.h"
+#include "MyCameraActor.h"
 #include "GameFramework/Actor.h"
 #include "ObstacleActor.generated.h"
 
@@ -23,6 +24,7 @@ protected:
 public:	
 
 	AMyCharacter* MyCharacter; // This will be the variable to access MyCharacter
+	AMyCameraActor* MyCamera;
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

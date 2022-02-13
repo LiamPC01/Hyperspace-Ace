@@ -6,7 +6,6 @@
 #include "GameFramework/Character.h"
 #include "MyCharacter.generated.h"
 
-
 UCLASS()
 class HYPERCASUAL_PROTO_API AMyCharacter : public ACharacter
 {
@@ -17,7 +16,6 @@ public:
 	AMyCharacter();
 
 	float Lane = 2;
-	
 
 protected:
 	// Called when the game starts or when spawned
@@ -39,6 +37,9 @@ public:
 	UFUNCTION()
 		void MoveForward();
 
+	UFUNCTION()
+		void DecSpeed();
+
 	UPROPERTY(EditAnywhere, Category = "Movement")
 		float InterpSpeed = 10;
 
@@ -48,10 +49,13 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Movement")
 		FVector ActorDestination;
 
-	UPROPERTY(EditAnywhere, Category = "Movement")
-		float ForwardSpeed = 10.f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
+		float ForwardSpeed = 20.f;
 
-	void DecSpeed();
+
+
+
+
 
 
 
