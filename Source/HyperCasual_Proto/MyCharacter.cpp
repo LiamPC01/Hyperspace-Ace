@@ -18,16 +18,16 @@ void AMyCharacter::BeginPlay()
 	Super::BeginPlay();
 
 	ActorDestination = GetActorLocation();
-	
+
 }
 
 // Called every frame
 void AMyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	UE_LOG(LogTemp, Warning, TEXT("ForwardSpeed %f"), ForwardSpeed);
 	ActorLocation = GetActorLocation();
-
+	ForwardSpeed += 0.05f; // Increasing speed of player every tick
 	MoveForward();
 
 	// Moving actor left & right
@@ -75,7 +75,7 @@ void AMyCharacter::MoveForward()
 void AMyCharacter::DecSpeed()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, "DecSpeed function called");
-	ForwardSpeed -= 0.5f;
+	ForwardSpeed -= 15.f;
 }
 
 

@@ -28,14 +28,9 @@ void AMyCameraActor::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	FVector ActorLocation = GetActorLocation();
-	ActorLocation.X += CamForwardSpeed;
+	ActorLocation.X += 20.f;
 	SetActorLocation(ActorLocation);
 
 }
 
-void AMyCameraActor::DecSpeedCam()
-{
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, "DecSpeedCam called");
-	//CamForwardSpeed -= 0.5f;
-}
 

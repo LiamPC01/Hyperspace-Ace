@@ -25,13 +25,6 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UFUNCTION()
-		void DecSpeedCam();
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
-		float CamForwardSpeed = 20.f;
-
-
 
 
 };

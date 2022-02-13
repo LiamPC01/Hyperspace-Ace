@@ -30,7 +30,7 @@ void AObstacleActor::BeginPlay()
 
 	// Casting to MyCharacter, accessing using UGameplayStatics.
 	MyCharacter = Cast<AMyCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
-	//MyCamera = Cast<AMyCameraActor>(UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0)); // not sure if GetPlayerCameraManager works
+	
 
 
 }
@@ -48,7 +48,7 @@ void AObstacleActor::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor*
 	if (MyCharacter && MyCharacter == OtherActor)
 	{
 		MyCharacter->DecSpeed(); // Casting to MyCharacter to decrease ForwardSpeed
-		MyCamera->DecSpeedCam();
+		Destroy(false, true);
 
 	}
 }
