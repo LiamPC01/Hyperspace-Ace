@@ -52,6 +52,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
 		float ForwardSpeed = 20.f;
 
+	UPROPERTY()
+		float PeakSpeed = 0;
+
 
 
 

@@ -75,7 +75,7 @@ void AMyCharacter::MoveForward()
 void AMyCharacter::DecSpeed()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, "DecSpeed function called");
-	ForwardSpeed -= 15.f;
+	ForwardSpeed -= 25.f;
 }
 
 

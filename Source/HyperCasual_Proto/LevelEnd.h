@@ -5,40 +5,36 @@
 #include "CoreMinimal.h"
 #include "MyCharacter.h"
 #include "GameFramework/Actor.h"
-#include "ObstacleActor.generated.h"
+#include "LevelEnd.generated.h"
 
 UCLASS()
-class HYPERCASUAL_PROTO_API AObstacleActor : public AActor
+class HYPERCASUAL_PROTO_API ALevelEnd : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AObstacleActor();
+	ALevelEnd();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 public:	
-
-	AMyCharacter* MyCharacter; // This will be the variable to access MyCharacter
-
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	AMyCharacter* MyCharacter; // This will be the variable to access MyCharacter
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 		class UBoxComponent* CollisionBox;
 
 	UFUNCTION()
-		void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, 
+		void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 			int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 	UFUNCTION()
 		void OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 			int32 OtherBodyIndex);
-
-	UPROPERTY()
-		float ObstaclesHit;
 
 };
