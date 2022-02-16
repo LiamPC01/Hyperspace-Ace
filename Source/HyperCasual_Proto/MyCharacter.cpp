@@ -22,6 +22,8 @@ void AMyCharacter::BeginPlay()
 
 	ActorDestination = GetActorLocation();
 
+	bIsPlayer = true;
+
 }
 
 // Called every frame
@@ -34,6 +36,11 @@ void AMyCharacter::Tick(float DeltaTime)
 	if (ForwardSpeed < 50.f)
 	{
 		ForwardSpeed += 0.05f; // Increasing speed of player every tick
+	}
+
+	if (ForwardSpeed <= 0)
+	{
+		bIsPlayer = false;
 	}
 
 

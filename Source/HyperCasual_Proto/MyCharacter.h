@@ -55,10 +55,13 @@ public:
 	void CountDown();
 
 	UPROPERTY(BlueprintReadOnly)
-	int Seconds = 0;
+		int Seconds = 0;
 
 	UPROPERTY(BlueprintReadOnly)
-	int Score = 120;
+		int Score = 130;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerStatus")
+		bool bIsPlayer;
 
 
 
