@@ -50,10 +50,15 @@ public:
 		FVector ActorDestination;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
-		float ForwardSpeed = 20.f;
+		float ForwardSpeed = 10.f;
 
-	UPROPERTY()
-		float PeakSpeed = 0;
+	void CountDown();
+
+	UPROPERTY(BlueprintReadOnly)
+	int Seconds = 0;
+
+	UPROPERTY(BlueprintReadOnly)
+	int Score = 120;
 
 
 

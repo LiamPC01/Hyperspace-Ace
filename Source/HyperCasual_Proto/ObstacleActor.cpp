@@ -49,7 +49,6 @@ void AObstacleActor::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor*
 	{
 		MyCharacter->DecSpeed(); // Casting to MyCharacter to decrease ForwardSpeed
 		Destroy(false, true); // Destroy obstacle
-		ObstaclesHit++;
 
 	}
 }

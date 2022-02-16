@@ -17,6 +17,9 @@ void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
+	FTimerHandle TimerHandle;
+	GetWorldTimerManager().SetTimer(TimerHandle, this, &AMyCharacter::CountDown, 1.f, true, 0.0);
+
 	ActorDestination = GetActorLocation();
 
 }
@@ -27,7 +30,13 @@ void AMyCharacter::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	UE_LOG(LogTemp, Warning, TEXT("ForwardSpeed %f"), ForwardSpeed);
 	ActorLocation = GetActorLocation();
-	ForwardSpeed += 0.05f; // Increasing speed of player every tick
+
+	if (ForwardSpeed < 50.f)
+	{
+		ForwardSpeed += 0.05f; // Increasing speed of player every tick
+	}
+
+
 	MoveForward();
 
 	// Moving actor left & right
@@ -75,7 +84,14 @@ void AMyCharacter::MoveForward()
 void AMyCharacter::DecSpeed()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, "DecSpeed function called");
-	ForwardSpeed -= 25.f;
+	ForwardSpeed -= 25.f; // ForwardSpeed must be 25 or higher to destroy a block
+
+}
+
+void AMyCharacter::CountDown()
+{
+	Seconds += 1;
+	Score -= 1;
 }
 
 
