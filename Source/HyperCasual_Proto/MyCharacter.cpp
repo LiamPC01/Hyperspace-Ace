@@ -30,7 +30,7 @@ void AMyCharacter::BeginPlay()
 void AMyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	UE_LOG(LogTemp, Warning, TEXT("ForwardSpeed %f"), ForwardSpeed);
+	
 	ActorLocation = GetActorLocation();
 
 	if (ForwardSpeed < 50.f)
@@ -66,7 +66,7 @@ void AMyCharacter::MoveLeft()
 	{
 		ActorDestination.Y -= 200;
 		Lane -= 1;
-		UE_LOG(LogTemp, Warning, TEXT("Lane %f"), Lane);
+		
 	}
 }
 
@@ -76,7 +76,7 @@ void AMyCharacter::MoveRight()
 	{
 		ActorDestination.Y += 200;
 		Lane += 1;
-		UE_LOG(LogTemp, Warning, TEXT("Lane %f"), Lane);
+		
 	}
 }
 
@@ -90,7 +90,7 @@ void AMyCharacter::MoveForward()
 
 void AMyCharacter::DecSpeed()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, "DecSpeed function called");
+	
 	ForwardSpeed -= 25.f; // ForwardSpeed must be 25 or higher to destroy a block
 
 }

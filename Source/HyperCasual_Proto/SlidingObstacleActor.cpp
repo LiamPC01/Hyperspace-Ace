@@ -49,7 +49,7 @@ void ASlidingObstacleActor::Tick(float DeltaTime)
 
 void ASlidingObstacleActor::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Green, "Overlap Begin");
+	
 	if (MyCharacter && MyCharacter == OtherActor)
 	{
 		MyCharacter->DecSpeed(); // Casting to MyCharacter to decrease ForwardSpeed
@@ -60,7 +60,7 @@ void ASlidingObstacleActor::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, 
 
 void ASlidingObstacleActor::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, "Overlap End");
+	
 }
 
 void ASlidingObstacleActor::Move()
@@ -68,7 +68,7 @@ void ASlidingObstacleActor::Move()
 	if (bGoingLeft)
 	{
 		FVector ActorLocation = GetActorLocation();
-		ActorLocation.Y -= 5.f;
+		ActorLocation.Y -= 4.f;
 		SetActorLocation(ActorLocation);
 		ActorLocationY = ActorLocation.Y;
 		if (ActorLocationY <= -200)
@@ -80,7 +80,7 @@ void ASlidingObstacleActor::Move()
 	else if (bGoingRight)
 	{
 		FVector ActorLocation = GetActorLocation();
-		ActorLocation.Y += 5.f;
+		ActorLocation.Y += 4.f;
 		SetActorLocation(ActorLocation);
 		ActorLocationY = ActorLocation.Y;
 		if (ActorLocationY >= 200)

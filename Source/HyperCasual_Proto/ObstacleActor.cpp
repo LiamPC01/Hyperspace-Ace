@@ -44,7 +44,7 @@ void AObstacleActor::Tick(float DeltaTime)
 
 void AObstacleActor::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Green, "Overlap Begin");
+	
 	if (MyCharacter && MyCharacter == OtherActor)
 	{
 		MyCharacter->DecSpeed(); // Casting to MyCharacter to decrease ForwardSpeed
@@ -55,6 +55,6 @@ void AObstacleActor::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor*
 
 void AObstacleActor::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, "Overlap End");
+	
 }
 
